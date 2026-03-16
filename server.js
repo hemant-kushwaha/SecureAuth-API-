@@ -1,7 +1,7 @@
 const express = require("express");
 require('dotenv').config();
 const connectDB = require("./Configs/dbConfig");
-const User = require("./Modals/User");
+const User = require("./Models/User");
 const CookieParser = require('cookie-parser')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -20,7 +20,7 @@ const app = express();
 app.use(express.json());
 app.use(CookieParser());
 
-// app.use(rateLimiter)
+app.use(rateLimiter)
 
 app.use("/auth",authRouter)
 app.use("/user",userRouter)
